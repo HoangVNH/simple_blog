@@ -1,12 +1,12 @@
 const Validator = require('validator');
 const isEmpty = require('is-empty');
 
-module.exports.validatePostInput = data => {
+module.exports = function validatePostInput(data) {
   let errors = {};
 
   let { title, body } = data;
 
-  title = isEmpty(titile) ? '' : title;
+  title = isEmpty(title) ? '' : title;
   body = isEmpty(body) ? '' : body;
 
   if (Validator.isEmpty(title)) {

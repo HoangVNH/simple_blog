@@ -1,7 +1,7 @@
 const Validator = require('validator');
 const isEmpty = require('is-empty');
 
-module.exports.validateSignupInput = data => {
+module.exports = function validateSignupInput(data) {
   let errors = {};
 
   let { user_name, email, password } = data;
@@ -22,7 +22,7 @@ module.exports.validateSignupInput = data => {
 
   if (Validator.isEmpty(password)) {
     errors.password = 'Password is required';
-  } else if (Validator.length(password, { min: 6, max: 30 })) {
+  } else if (!Validator.isLength(password, { min: 6, max: 30 })) {
     errors.password = 'Password must be at least 6 characters';
   }
 
